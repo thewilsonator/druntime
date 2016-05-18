@@ -108,3 +108,26 @@ struct target {
  +/
 immutable weak = _weak();
 private struct _weak {}
+
+/**
+ * VS C++ has different manglings for structs and classes. With extern(C++), the
+ * D compiler mangles D structs as C++ structs and D classes as pointers to C++
+ * classes. This is not always convenient because of the different semantics of
+ * structs and classes in D.
+ *
+ * When this attribute is applied to a struct or class then the C++ mangling
+ * can be influenced for VS C++ only. The passed string must be "class" or
+ * "struct".
+ *
+ * Example:
+ * ---
+ * import ldc.attributes;
+ *
+ * @visualcppmangle("class")
+ * extern(C++, llvm) struct StringRef {
+ * }
+ * ---
+ */
+struct visualcppmangle {
+    string mangleas;
+}
