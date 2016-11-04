@@ -15,6 +15,15 @@ module rt.typeinfo.ti_cdouble;
 
 private import rt.util.typeinfo;
 
+version( LDC )
+{
+    version( X86_64 )
+    {
+        version( Win64 ) {}
+        else version = LDC_SystemV_AMD64;
+    }
+}
+
 // cdouble
 
 class TypeInfo_r : TypeInfo
@@ -65,7 +74,7 @@ class TypeInfo_r : TypeInfo
         return F.alignof;
     }
 
-    version (X86_64) override int argTypes(out TypeInfo arg1, out TypeInfo arg2)
+    version (LDC_SystemV_AMD64) override int argTypes(out TypeInfo arg1, out TypeInfo arg2)
     {
         arg1 = typeid(double);
         arg2 = typeid(double);

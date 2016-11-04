@@ -33,7 +33,16 @@ version( AArch64 )
     else version = AAPCS64;
 }
 
-version( X86_64 )
+version( LDC )
+{
+    version( X86_64 )
+    {
+        version( Win64 ) {}
+        else version = LDC_SystemV_AMD64;
+    }
+}
+
+version( LDC_SystemV_AMD64 )
 {
     // Determine if type is a vector type
     template isVectorType(T)
@@ -315,12 +324,6 @@ version( LDC )
         }
     }
 
-    version( X86_64 )
-    {
-        version( Win64 ) {}
-        else version = SystemV_AMD64;
-    }
-
     // Type va_list:
     // On most platforms, really struct va_list { void* ptr; },
     // but for compatibility with x86-style code that uses char*,
@@ -329,7 +332,7 @@ version( LDC )
     // struct passed by reference. We define va_list as a raw pointer
     // (to the actual struct) for the byref semantics and allocate
     // the struct in LDC's va_start and va_copy intrinsics.
-    version (SystemV_AMD64)
+    version (LDC_SystemV_AMD64)
     {
         alias va_list = __va_list_tag*;
     }
@@ -382,7 +385,7 @@ version( LDC )
 
     T va_arg(T)(ref va_list ap)
     {
-        version( SystemV_AMD64 )
+        version( LDC_SystemV_AMD64 )
         {
             T arg;
             va_arg(ap, arg);
@@ -469,7 +472,7 @@ version( LDC )
 
     void va_arg(T)(ref va_list ap, ref T parmn)
     {
-        version( SystemV_AMD64 )
+        version( LDC_SystemV_AMD64 )
         {
             va_arg_x86_64(cast(__va_list*)ap, parmn);
         }
@@ -522,7 +525,7 @@ version( LDC )
 
     void va_arg()(ref va_list ap, TypeInfo ti, void* parmn)
     {
-      version( SystemV_AMD64 )
+      version( LDC_SystemV_AMD64 )
       {
         va_arg_x86_64(cast(__va_list*)ap, ti, parmn);
       }

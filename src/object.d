@@ -57,12 +57,18 @@ version (LDC)
     // import core.vararg like DMD does.
     version (X86_64)
     {
-        struct __va_list_tag
+        version (Win64) {}
+        else
         {
-            uint offset_regs = 6 * 8;
-            uint offset_fpregs = 6 * 8 + 8 * 16;
-            void* stack_args;
-            void* reg_args;
+            version = LDC_SystemV_AMD64;
+
+            struct __va_list_tag
+            {
+                uint offset_regs = 6 * 8;
+                uint offset_fpregs = 6 * 8 + 8 * 16;
+                void* stack_args;
+                void* reg_args;
+            }
         }
     }
     else version (AArch64)
@@ -364,7 +370,7 @@ else
     /** Return internal info on arguments fitting into 8byte.
      * See X86-64 ABI 3.2.3
      */
-    version (X86_64) int argTypes(out TypeInfo arg1, out TypeInfo arg2) @safe nothrow
+    version (LDC_SystemV_AMD64) int argTypes(out TypeInfo arg1, out TypeInfo arg2) @safe nothrow
     {
         arg1 = this;
         return 0;
@@ -409,7 +415,7 @@ class TypeInfo_Typedef : TypeInfo
 
     override @property size_t talign() nothrow pure const { return base.talign; }
 
-    version (X86_64) override int argTypes(out TypeInfo arg1, out TypeInfo arg2)
+    version (LDC_SystemV_AMD64) override int argTypes(out TypeInfo arg1, out TypeInfo arg2)
     {
         return base.argTypes(arg1, arg2);
     }
@@ -564,7 +570,7 @@ class TypeInfo_Array : TypeInfo
         return (void[]).alignof;
     }
 
-    version (X86_64) override int argTypes(out TypeInfo arg1, out TypeInfo arg2)
+    version (LDC_SystemV_AMD64) override int argTypes(out TypeInfo arg1, out TypeInfo arg2)
     {
         arg1 = typeid(size_t);
         arg2 = typeid(void*);
@@ -691,7 +697,7 @@ class TypeInfo_StaticArray : TypeInfo
         return value.talign;
     }
 
-    version (X86_64) override int argTypes(out TypeInfo arg1, out TypeInfo arg2)
+    version (LDC_SystemV_AMD64) override int argTypes(out TypeInfo arg1, out TypeInfo arg2)
     {
         arg1 = typeid(void*);
         return 0;
@@ -747,7 +753,7 @@ class TypeInfo_AssociativeArray : TypeInfo
         return (char[int]).alignof;
     }
 
-    version (X86_64) override int argTypes(out TypeInfo arg1, out TypeInfo arg2)
+    version (LDC_SystemV_AMD64) override int argTypes(out TypeInfo arg1, out TypeInfo arg2)
     {
         arg1 = typeid(void*);
         return 0;
@@ -782,7 +788,7 @@ class TypeInfo_Vector : TypeInfo
 
     override @property size_t talign() nothrow pure const { return 16; }
 
-    version (X86_64) override int argTypes(out TypeInfo arg1, out TypeInfo arg2)
+    version (LDC_SystemV_AMD64) override int argTypes(out TypeInfo arg1, out TypeInfo arg2)
     {
         return base.argTypes(arg1, arg2);
     }
@@ -883,7 +889,7 @@ class TypeInfo_Delegate : TypeInfo
         return dg.alignof;
     }
 
-    version (X86_64) override int argTypes(out TypeInfo arg1, out TypeInfo arg2)
+    version (LDC_SystemV_AMD64) override int argTypes(out TypeInfo arg1, out TypeInfo arg2)
     {
         arg1 = typeid(void*);
         arg2 = typeid(void*);
@@ -1271,7 +1277,7 @@ class TypeInfo_Struct : TypeInfo
 
     override @property immutable(void)* rtInfo() const { return m_RTInfo; }
 
-    version (X86_64)
+    version (LDC_SystemV_AMD64)
     {
         override int argTypes(out TypeInfo arg1, out TypeInfo arg2)
         {
@@ -1378,7 +1384,7 @@ class TypeInfo_Tuple : TypeInfo
         assert(0);
     }
 
-    version (X86_64) override int argTypes(out TypeInfo arg1, out TypeInfo arg2)
+    version (LDC_SystemV_AMD64) override int argTypes(out TypeInfo arg1, out TypeInfo arg2)
     {
         assert(0);
     }
@@ -1420,7 +1426,7 @@ class TypeInfo_Const : TypeInfo
 
     override @property size_t talign() nothrow pure const { return base.talign; }
 
-    version (X86_64) override int argTypes(out TypeInfo arg1, out TypeInfo arg2)
+    version (LDC_SystemV_AMD64) override int argTypes(out TypeInfo arg1, out TypeInfo arg2)
     {
         return base.argTypes(arg1, arg2);
     }
