@@ -7,14 +7,36 @@
  */
 module ldc.exception;
 
-
 /**
- * E
+ * Returns the current "active" exception, or null when no exception is active.
+ * An exception is considered active from when it is thrown until its catch
+ * handler exits.
  *
  * Example:
  * ---
- * import ldc.exception;
+ * static import ldc.exception;
+ * void testexample()
+ * {
+ *     void checkException(FooException ex)
+ *     {
+ *         assert(ex is ldc.exception.getCurrentException());
+ *     }
+ *
+ *     try
+ *     {
+ *         checkException(null);
+ *
+ *         auto ex = new FooException;
+ *         scope (exit)
+ *             checkException(ex);
+ *
+ *         throw ex;
+ *     }
+ *     catch (FooException ex)
+ *     {
+ *         checkException(ex);
+ *     }
+ * }
  * ---
  */
-extern(C)
-Throwable getCurrentException() nothrow @nogc;
+extern (C) Throwable getCurrentException() nothrow @nogc;
