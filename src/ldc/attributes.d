@@ -223,3 +223,23 @@ immutable weak = _weak();
 private struct _weak
 {
 }
+
+///Readability aliases for compute
+enum deviceOnly = 0;
+enum hostAndDevice = 1;
+
+/++
+ + When applied to a module, specifies the the module should be compiled for
+ + dcompute (-mdcompute-targets=<...>) using the NVPTX and/or SPIRV backends of
+ + LLVM.
+ +/
+struct compute {
+    int alsoProduceHostCode;
+}
+
+/++
+ + Mark a function as a 'kernel', a compute API (CUDA, OpenCL) entry point.
+ + Equivalent to __kernel__ in OpenCL and __global__ in CUDA.
+ +/
+private struct _kernel {}
+immutable kernel = _kernel();
