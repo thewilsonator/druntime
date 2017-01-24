@@ -229,7 +229,7 @@ enum deviceOnly = 0;
 enum hostAndDevice = 1;
 
 /++
- + When applied to a module, specifies the the module should be compiled for
+ + When applied to a module, specifies that the module should be compiled for
  + dcompute (-mdcompute-targets=<...>) using the NVPTX and/or SPIRV backends of
  + LLVM.
  +/
