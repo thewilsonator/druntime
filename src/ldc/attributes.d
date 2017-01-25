@@ -225,21 +225,42 @@ private struct _weak
 }
 
 ///Readability aliases for compute
-enum deviceOnly = 0;
-enum hostAndDevice = 1;
+enum CompileFor : int
+{
+    deviceOnly = 0,
+    hostAndDevice = 1
+}
 
 /++
  + When applied to a module, specifies that the module should be compiled for
  + dcompute (-mdcompute-targets=<...>) using the NVPTX and/or SPIRV backends of
  + LLVM.
+ +
+ + Examples:
+ + ---
+ + @compute(CompileFor.deviceOnly) module foo;
+ + import ldc.attributes;
+ + ---
  +/
-struct compute {
-    int alsoProduceHostCode;
+struct compute
+{
+    CompileFor codeProduction = CompileFor.deviceOnly;
 }
 
 /++
  + Mark a function as a 'kernel', a compute API (CUDA, OpenCL) entry point.
  + Equivalent to __kernel__ in OpenCL and __global__ in CUDA.
+ +
+ + Examples:
+ + ---
+ + @compute(CompileFor.deviceOnly) module foo;
+ + import ldc.attributes;
+ +
+ + @kernel void bar()
+ + {
+ +     //...
+ + }
+ + ---
  +/
 private struct _kernel {}
 immutable kernel = _kernel();
