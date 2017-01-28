@@ -31,7 +31,7 @@ enum Generic = 4;
 alias PrivatePointer(T)     = Pointer!(0,T);
 alias GlobalPointer(T)      = Pointer!(1,T);
 alias SharedPointer(T)      = Pointer!(2,T);
-alias ConstantPointer(T)    = Pointer!(3,T);
+alias ConstantPointer(T)    = Pointer!(3,immutable(T));
 alias GenericPointer(T)     = Pointer!(4,T);
 
 struct Pointer(uint p, T) if(p <= Generic)
