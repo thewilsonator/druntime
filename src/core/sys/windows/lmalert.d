@@ -11,14 +11,15 @@ version (Windows):
 pragma(lib, "netapi32");
 
 private import core.sys.windows.lmcons, core.sys.windows.windef;
+private import core.sys.windows.winnt : TEXT;
 
 const TCHAR[]
-    ALERTER_MAILSLOT     = `\\.\MAILSLOT\Alerter`,
-    ALERT_PRINT_EVENT    = "PRINTING",
-    ALERT_MESSAGE_EVENT  = "MESSAGE",
-    ALERT_ERRORLOG_EVENT = "ERRORLOG",
-    ALERT_ADMIN_EVENT    = "ADMIN",
-    ALERT_USER_EVENT     = "USER";
+    ALERTER_MAILSLOT     = TEXT!`\\.\MAILSLOT\Alerter`,
+    ALERT_PRINT_EVENT    = TEXT!"PRINTING",
+    ALERT_MESSAGE_EVENT  = TEXT!"MESSAGE",
+    ALERT_ERRORLOG_EVENT = TEXT!"ERRORLOG",
+    ALERT_ADMIN_EVENT    = TEXT!"ADMIN",
+    ALERT_USER_EVENT     = TEXT!"USER";
 //MACRO #define ALERT_OTHER_INFO(x) ((PBYTE)(x)+sizeof(STD_ALERT))
 
 //MACRO #define ALERT_VAR_DATA(p) ((PBYTE)(p)+sizeof(*p))

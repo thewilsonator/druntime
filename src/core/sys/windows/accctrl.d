@@ -13,6 +13,7 @@ version (Windows):
 version (ANSI) {} else version = Unicode;
 
 private import core.sys.windows.basetyps, core.sys.windows.w32api, core.sys.windows.winbase, core.sys.windows.windef;
+private import core.sys.windows.winnt : TEXT;
 
 // FIXME: check types and grouping of constants
 // FIXME: check Windows version support
@@ -112,7 +113,7 @@ enum : uint {
     ACTRL_ACCESS_SUPPORTS_OBJECT_ENTRIES = 0x00000001
 }
 
-const TCHAR[] ACCCTRL_DEFAULT_PROVIDER = "Windows NT Access Provider";
+const TCHAR[] ACCCTRL_DEFAULT_PROVIDER = TEXT!"Windows NT Access Provider";
 
 enum uint
     TRUSTEE_ACCESS_ALLOWED    = 0x00000001,

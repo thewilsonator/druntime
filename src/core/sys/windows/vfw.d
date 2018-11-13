@@ -21,7 +21,7 @@ private import
     core.sys.windows.w32api,
     core.sys.windows.windef,
     core.sys.windows.winuser;
-
+private import core.sys.windows.winnt : TEXT;
 extern(Windows) {
     DWORD VideoForWindowsVersion();
     LONG InitVFW();
@@ -1504,7 +1504,7 @@ enum AVIERR_CANTCOMPRESS   = MAKE_AVIERR(117);
 enum AVIERR_USERABORT      = MAKE_AVIERR(198);
 enum AVIERR_ERROR          = MAKE_AVIERR(199);
 
-const TCHAR[] MCIWND_WINDOW_CLASS = "MCIWndClass";
+const TCHAR[] MCIWND_WINDOW_CLASS = TEXT!"MCIWndClass";
 
 extern (Windows) {
     HWND MCIWndCreateA(HWND hwndParent, HINSTANCE hInstance, DWORD dwStyle, LPCSTR szFile);

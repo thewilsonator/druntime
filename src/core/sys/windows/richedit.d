@@ -13,6 +13,7 @@ version (ANSI) {} else version = Unicode;
 
 private import core.sys.windows.windef, core.sys.windows.winuser;
 private import core.sys.windows.wingdi; // for LF_FACESIZE
+private import core.sys.windows.winnt : TEXT;
 
 align(4):
 
@@ -22,12 +23,12 @@ const wchar[] RICHEDIT_CLASS = "RichEdit20W";
 const char[] RICHEDIT_CLASS  = "RichEdit20A";
 }
 
-enum RICHEDIT_CLASS10A = "RICHEDIT";
+enum RICHEDIT_CLASS10A = TEXT!"RICHEDIT";
 
 const TCHAR[]
-    CF_RTF       = "Rich Text Format",
-    CF_RTFNOOBJS = "Rich Text Format Without Objects",
-    CF_RETEXTOBJ = "RichEdit Text and Objects";
+    CF_RTF       = TEXT!"Rich Text Format",
+    CF_RTFNOOBJS = TEXT!"Rich Text Format Without Objects",
+    CF_RETEXTOBJ = TEXT!"RichEdit Text and Objects";
 
 enum DWORD
     CFM_BOLD        = 1,

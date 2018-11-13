@@ -21,7 +21,7 @@ private import core.sys.windows.prsht, core.sys.windows.unknwn, core.sys.windows
   core.sys.windows.winnt, core.sys.windows.winuser, core.sys.windows.wtypes, core.sys.windows.objfwd, core.sys.windows.objidl;
 private import core.sys.windows.winnetwk; // for NETRESOURCE
 private import core.sys.windows.oaidl : VARIANT;
-
+private import core.sys.windows.winnt : TEXT;
 
 // FIXME: clean up Windows version support
 
@@ -175,8 +175,8 @@ enum {
     SHDID_NET_OTHER
 }
 
-const TCHAR[] REGSTR_PATH_EXPLORER = "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer";
-const TCHAR[] REGSTR_PATH_SPECIAL_FOLDERS=REGSTR_PATH_EXPLORER ~ "\\Shell Folders";
+const TCHAR[] REGSTR_PATH_EXPLORER = TEXT!"Software\\Microsoft\\Windows\\CurrentVersion\\Explorer";
+const TCHAR[] REGSTR_PATH_SPECIAL_FOLDERS=REGSTR_PATH_EXPLORER ~ TEXT!"\\Shell Folders";
 
 enum {
     CSIDL_DESKTOP            =  0,
@@ -241,19 +241,19 @@ enum {
 }
 
 const TCHAR[]
-    CFSTR_SHELLIDLIST       = "Shell IDList Array",
-    CFSTR_SHELLIDLISTOFFSET = "Shell Object Offsets",
-    CFSTR_NETRESOURCES      = "Net Resource",
-    CFSTR_FILECONTENTS      = "FileContents",
-    CFSTR_FILENAMEA         = "FileName",
-    CFSTR_FILENAMEMAPA      = "FileNameMap",
-    CFSTR_FILEDESCRIPTORA   = "FileGroupDescriptor",
-    CFSTR_INETURLA          = "UniformResourceLocator",
+    CFSTR_SHELLIDLIST       = TEXT!"Shell IDList Array",
+    CFSTR_SHELLIDLISTOFFSET = TEXT!"Shell Object Offsets",
+    CFSTR_NETRESOURCES      = TEXT!"Net Resource",
+    CFSTR_FILECONTENTS      = TEXT!"FileContents",
+    CFSTR_FILENAMEA         = TEXT!"FileName",
+    CFSTR_FILENAMEMAPA      = TEXT!"FileNameMap",
+    CFSTR_FILEDESCRIPTORA   = TEXT!"FileGroupDescriptor",
+    CFSTR_INETURLA          = TEXT!"UniformResourceLocator",
     CFSTR_SHELLURL          = CFSTR_INETURLA,
-    CFSTR_FILENAMEW         = "FileNameW",
-    CFSTR_FILENAMEMAPW      = "FileNameMapW",
-    CFSTR_FILEDESCRIPTORW   = "FileGroupDescriptorW",
-    CFSTR_INETURLW          = "UniformResourceLocatorW";
+    CFSTR_FILENAMEW         = TEXT!"FileNameW",
+    CFSTR_FILENAMEMAPW      = TEXT!"FileNameMapW",
+    CFSTR_FILEDESCRIPTORW   = TEXT!"FileGroupDescriptorW",
+    CFSTR_INETURLW          = TEXT!"UniformResourceLocatorW";
 
 version (Unicode) {
     alias CFSTR_FILENAMEW CFSTR_FILENAME;
@@ -267,11 +267,11 @@ version (Unicode) {
     alias CFSTR_INETURLA CFSTR_INETURL;
 }
 const TCHAR[]
-    CFSTR_PRINTERGROUP        = "PrinterFriendlyName",
-    CFSTR_INDRAGLOOP          = "InShellDragLoop",
-    CFSTR_PASTESUCCEEDED      = "Paste Succeeded",
-    CFSTR_PERFORMEDDROPEFFECT = "Performed DropEffect",
-    CFSTR_PREFERREDDROPEFFECT = "Preferred DropEffect";
+    CFSTR_PRINTERGROUP        = TEXT!"PrinterFriendlyName",
+    CFSTR_INDRAGLOOP          = TEXT!"InShellDragLoop",
+    CFSTR_PASTESUCCEEDED      = TEXT!"Paste Succeeded",
+    CFSTR_PERFORMEDDROPEFFECT = TEXT!"Performed DropEffect",
+    CFSTR_PREFERREDDROPEFFECT = TEXT!"Preferred DropEffect";
 
 enum CMF_NORMAL=0;
 enum CMF_DEFAULTONLY=1;
@@ -301,9 +301,9 @@ version (Unicode) {
 }
 
 const TCHAR[]
-    CMDSTR_NEWFOLDER   = "NewFolder",
-    CMDSTR_VIEWLIST    = "ViewList",
-    CMDSTR_VIEWDETAILS = "ViewDetails";
+    CMDSTR_NEWFOLDER   = TEXT!"NewFolder",
+    CMDSTR_VIEWLIST    = TEXT!"ViewList",
+    CMDSTR_VIEWDETAILS = TEXT!"ViewDetails";
 
 enum CMIC_MASK_HOTKEY     = SEE_MASK_HOTKEY;
 enum CMIC_MASK_ICON       = SEE_MASK_ICON;

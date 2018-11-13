@@ -31,7 +31,7 @@ version (ANSI) {} else version = Unicode;
 
 import core.sys.windows.schannel, core.sys.windows.winber;
 private import core.sys.windows.wincrypt, core.sys.windows.windef;
-
+private import core.sys.windows.winnt : TEXT;
 //align(4):
 
 enum {
@@ -47,7 +47,7 @@ enum {
  *  LDAP_VENDOR_NAME_W respectively; similarly with other string constants
  *  defined in this module.
  */
-const TCHAR[] LDAP_VENDOR_NAME = "Microsoft Corporation.";
+const TCHAR[] LDAP_VENDOR_NAME = TEXT!"Microsoft Corporation.";
 
 enum LDAP_API_VERSION          = 2004;
 enum LDAP_VENDOR_VERSION       =  510;
@@ -193,7 +193,7 @@ enum {
 
 enum LDAP_NO_LIMIT = 0;
 
-const TCHAR[] LDAP_CONTROL_REFERRALS = "1.2.840.113556.1.4.616";
+const TCHAR[] LDAP_CONTROL_REFERRALS = TEXT!"1.2.840.113556.1.4.616";
 
 // FIXME: check type (declared with U suffix in MinGW)
 enum : uint {
@@ -236,13 +236,13 @@ enum {
 }
 
 const TCHAR[]
-    LDAP_SERVER_SORT_OID         = "1.2.840.113556.1.4.473",
-    LDAP_SERVER_RESP_SORT_OID    = "1.2.840.113556.1.4.474",
-    LDAP_PAGED_RESULT_OID_STRING = "1.2.840.113556.1.4.319",
-    LDAP_CONTROL_VLVREQUEST      = "2.16.840.1.113730.3.4.9",
-    LDAP_CONTROL_VLVRESPONSE     = "2.16.840.1.113730.3.4.10",
-    LDAP_START_TLS_OID           = "1.3.6.1.4.1.1466.20037",
-    LDAP_TTL_EXTENDED_OP_OID     = "1.3.6.1.4.1.1466.101.119.1";
+    LDAP_SERVER_SORT_OID         = TEXT!"1.2.840.113556.1.4.473",
+    LDAP_SERVER_RESP_SORT_OID    = TEXT!"1.2.840.113556.1.4.474",
+    LDAP_PAGED_RESULT_OID_STRING = TEXT!"1.2.840.113556.1.4.319",
+    LDAP_CONTROL_VLVREQUEST      = TEXT!"2.16.840.1.113730.3.4.9",
+    LDAP_CONTROL_VLVRESPONSE     = TEXT!"2.16.840.1.113730.3.4.10",
+    LDAP_START_TLS_OID           = TEXT!"1.3.6.1.4.1.1466.20037",
+    LDAP_TTL_EXTENDED_OP_OID     = TEXT!"1.3.6.1.4.1.1466.101.119.1";
 
 enum {
     LDAP_AUTH_NONE      = 0x00U,

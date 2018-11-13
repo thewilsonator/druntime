@@ -14,12 +14,13 @@ version (ANSI) {} else version = Unicode;
 pragma(lib, "advapi32");
 
 private import core.sys.windows.w32api, core.sys.windows.windef;
+private import core.sys.windows.winnt : TEXT;
 
 // FIXME: check Windows version support
 
 const TCHAR[]
-    SERVICES_ACTIVE_DATABASE = "ServicesActive",
-    SERVICES_FAILED_DATABASE = "ServicesFailed";
+    SERVICES_ACTIVE_DATABASE = TEXT!"ServicesActive",
+    SERVICES_FAILED_DATABASE = TEXT!"ServicesFailed";
 
 const TCHAR SC_GROUP_IDENTIFIER = '+';
 

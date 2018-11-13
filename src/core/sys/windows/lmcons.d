@@ -13,11 +13,12 @@ version (ANSI) {} else version = Unicode;
 
 private import core.sys.windows.windef;
 private import core.sys.windows.lmerr; // for NERR_BASE
+private import core.sys.windows.winnt : TEXT;
 
 const TCHAR[]
-    MESSAGE_FILENAME = "NETMSG",
-    OS2MSG_FILENAME = "BASE",
-    HELP_MSG_FILENAME = "NETH";
+    MESSAGE_FILENAME  = TEXT!"NETMSG",
+    OS2MSG_FILENAME   = TEXT!"BASE",
+    HELP_MSG_FILENAME = TEXT!"NETH";
 
 alias DWORD NET_API_STATUS, API_RET_TYPE;
 

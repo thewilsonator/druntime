@@ -15,15 +15,16 @@ pragma(lib, "comdlg32");
 private import core.sys.windows.w32api;
 import core.sys.windows.windef, core.sys.windows.winuser;
 import core.sys.windows.wingdi; // for LPLOGFONTA
+private import core.sys.windows.winnt : TEXT;
 
 const TCHAR[]
-    LBSELCHSTRING = "commdlg_LBSelChangedNotify",
-    SHAREVISTRING = "commdlg_ShareViolation",
-    FILEOKSTRING  = "commdlg_FileNameOK",
-    COLOROKSTRING = "commdlg_ColorOK",
-    SETRGBSTRING  = "commdlg_SetRGBColor",
-    HELPMSGSTRING = "commdlg_help",
-    FINDMSGSTRING = "commdlg_FindReplace";
+    LBSELCHSTRING = TEXT!"commdlg_LBSelChangedNotify",
+    SHAREVISTRING = TEXT!"commdlg_ShareViolation",
+    FILEOKSTRING  = TEXT!"commdlg_FileNameOK",
+    COLOROKSTRING = TEXT!"commdlg_ColorOK",
+    SETRGBSTRING  = TEXT!"commdlg_SetRGBColor",
+    HELPMSGSTRING = TEXT!"commdlg_help",
+    FINDMSGSTRING = TEXT!"commdlg_FindReplace";
 
 enum : UINT {
     CDN_FIRST          = -601, // also in commctrl.h

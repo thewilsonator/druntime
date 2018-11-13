@@ -13,6 +13,7 @@ version (ANSI) {} else version = Unicode;
 pragma(lib, "rasapi32");
 
 private import core.sys.windows.basetyps, core.sys.windows.lmcons, core.sys.windows.w32api, core.sys.windows.windef;
+private import core.sys.windows.winnt : TEXT;
 
 align(4):
 
@@ -78,19 +79,19 @@ enum RASFP_Slip = 0x00000002;
 enum RASFP_Ras = 0x00000004;
 
 const TCHAR[]
-    RASDT_Modem = "modem",
-    RASDT_Isdn = "isdn",
-    RASDT_X25 = "x25",
-    RASDT_Vpn = "vpn",
-    RASDT_Pad = "pad",
-    RASDT_Generic = "GENERIC",
-    RASDT_Serial = "SERIAL",
-    RASDT_FrameRelay = "FRAMERELAY",
-    RASDT_Atm = "ATM",
-    RASDT_Sonet = "SONET",
-    RASDT_SW56 = "SW56",
-    RASDT_Irda = "IRDA",
-    RASDT_Parallel = "PARALLEL";
+    RASDT_Modem      = TEXT!"modem",
+    RASDT_Isdn       = TEXT!"isdn",
+    RASDT_X25        = TEXT!"x25",
+    RASDT_Vpn        = TEXT!"vpn",
+    RASDT_Pad        = TEXT!"pad",
+    RASDT_Generic    = TEXT!"GENERIC",
+    RASDT_Serial     = TEXT!"SERIAL",
+    RASDT_FrameRelay = TEXT!"FRAMERELAY",
+    RASDT_Atm        = TEXT!"ATM",
+    RASDT_Sonet      = TEXT!"SONET",
+    RASDT_SW56       = TEXT!"SW56",
+    RASDT_Irda       = TEXT!"IRDA",
+    RASDT_Parallel   = TEXT!"PARALLEL";
 
 enum RASET_Phone = 1;
 enum RASET_Vpn = 2;

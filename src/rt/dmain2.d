@@ -597,7 +597,7 @@ extern (C) void _d_print_throwable(Throwable t)
                 len += written;
             }
 
-            wchar_t* get() { if (ptr) ptr[len] = 0; return ptr; }
+            wchar_t* get() { if (ptr) ptr[len] = '\0'; return ptr; }
 
             void free() { .free(ptr); }
         }
@@ -630,7 +630,7 @@ extern (C) void _d_print_throwable(Throwable t)
 
                 // Avoid static user32.dll dependency for console applications
                 // by loading it dynamically as needed
-                auto user32 = LoadLibraryW("user32.dll");
+                auto user32 = LoadLibraryW("user32.dll"w);
                 if (user32)
                 {
                     alias typeof(&MessageBoxW) PMessageBoxW;

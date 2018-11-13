@@ -13,6 +13,7 @@ version (ANSI) {} else version = Unicode;
 
 public import core.sys.windows.basetsd, core.sys.windows.windef, core.sys.windows.winerror;
 private import core.sys.windows.w32api;
+public import core.stdc.stddef : wchar_t;
 
 /* Translation Notes:
 The following macros are unneeded for D:
@@ -21,7 +22,7 @@ FIELD_OFFSET(t,f), CONTAINING_RECORD(address, type, field)
 
 alias void   VOID;
 alias char   CHAR, CCHAR;
-alias wchar  WCHAR;
+alias wchar_t  WCHAR;
 alias bool   BOOLEAN;
 alias byte   FCHAR;
 alias ubyte  UCHAR;
@@ -33,7 +34,7 @@ alias ulong  DWORDLONG, ULONGLONG;
 
 alias void*  PVOID, LPVOID;
 alias char*  PSZ, PCHAR, PCCHAR, LPCH, PCH, LPSTR, PSTR;
-alias wchar* PWCHAR, LPWCH, PWCH, LPWSTR, PWSTR;
+alias wchar_t* PWCHAR, LPWCH, PWCH, LPWSTR, PWSTR;
 alias bool*  PBOOLEAN;
 alias ubyte* PUCHAR;
 alias short* PSHORT;
@@ -47,7 +48,7 @@ alias void*  PVOID64;
 
 // const versions
 alias const(char)*  PCCH, LPCCH, PCSTR, LPCSTR;
-alias const(wchar)* LPCWCH, PCWCH, LPCWSTR, PCWSTR;
+alias const(wchar_t)* LPCWCH, PCWCH, LPCWSTR, PCWSTR;
 
 version (Unicode) {
     alias WCHAR TCHAR, _TCHAR;
@@ -383,43 +384,43 @@ enum : WORD {
     SECURITY_MANDATORY_PROTECTED_PROCESS_RID = 0x5000,
     SECURITY_MANDATORY_MAXIMUM_USER_RID      = SECURITY_MANDATORY_SYSTEM_RID
 }
-
+package enum wchar_t[] TEXT(string a) = cast(wchar_t[])a;
 const TCHAR[]
-    SE_CREATE_TOKEN_NAME           = "SeCreateTokenPrivilege",
-    SE_ASSIGNPRIMARYTOKEN_NAME     = "SeAssignPrimaryTokenPrivilege",
-    SE_LOCK_MEMORY_NAME            = "SeLockMemoryPrivilege",
-    SE_INCREASE_QUOTA_NAME         = "SeIncreaseQuotaPrivilege",
-    SE_UNSOLICITED_INPUT_NAME      = "SeUnsolicitedInputPrivilege",
-    SE_MACHINE_ACCOUNT_NAME        = "SeMachineAccountPrivilege",
-    SE_TCB_NAME                    = "SeTcbPrivilege",
-    SE_SECURITY_NAME               = "SeSecurityPrivilege",
-    SE_TAKE_OWNERSHIP_NAME         = "SeTakeOwnershipPrivilege",
-    SE_LOAD_DRIVER_NAME            = "SeLoadDriverPrivilege",
-    SE_SYSTEM_PROFILE_NAME         = "SeSystemProfilePrivilege",
-    SE_SYSTEMTIME_NAME             = "SeSystemtimePrivilege",
-    SE_PROF_SINGLE_PROCESS_NAME    = "SeProfileSingleProcessPrivilege",
-    SE_INC_BASE_PRIORITY_NAME      = "SeIncreaseBasePriorityPrivilege",
-    SE_CREATE_PAGEFILE_NAME        = "SeCreatePagefilePrivilege",
-    SE_CREATE_PERMANENT_NAME       = "SeCreatePermanentPrivilege",
-    SE_BACKUP_NAME                 = "SeBackupPrivilege",
-    SE_RESTORE_NAME                = "SeRestorePrivilege",
-    SE_SHUTDOWN_NAME               = "SeShutdownPrivilege",
-    SE_DEBUG_NAME                  = "SeDebugPrivilege",
-    SE_AUDIT_NAME                  = "SeAuditPrivilege",
-    SE_SYSTEM_ENVIRONMENT_NAME     = "SeSystemEnvironmentPrivilege",
-    SE_CHANGE_NOTIFY_NAME          = "SeChangeNotifyPrivilege",
-    SE_REMOTE_SHUTDOWN_NAME        = "SeRemoteShutdownPrivilege",
-    SE_CREATE_GLOBAL_NAME          = "SeCreateGlobalPrivilege",
-    SE_UNDOCK_NAME                 = "SeUndockPrivilege",
-    SE_MANAGE_VOLUME_NAME          = "SeManageVolumePrivilege",
-    SE_IMPERSONATE_NAME            = "SeImpersonatePrivilege",
-    SE_ENABLE_DELEGATION_NAME      = "SeEnableDelegationPrivilege",
-    SE_SYNC_AGENT_NAME             = "SeSyncAgentPrivilege",
-    SE_TRUSTED_CREDMAN_ACCESS_NAME = "SeTrustedCredManAccessPrivilege",
-    SE_RELABEL_NAME                = "SeRelabelPrivilege",
-    SE_INCREASE_WORKING_SET_NAME   = "SeIncreaseWorkingSetPrivilege",
-    SE_TIME_ZONE_NAME              = "SeTimeZonePrivilege",
-    SE_CREATE_SYMBOLIC_LINK_NAME   = "SeCreateSymbolicLinkPrivilege";
+    SE_CREATE_TOKEN_NAME           = TEXT!("SeCreateTokenPrivilege"),
+    SE_ASSIGNPRIMARYTOKEN_NAME     = TEXT!("SeAssignPrimaryTokenPrivilege"),
+    SE_LOCK_MEMORY_NAME            = TEXT!("SeLockMemoryPrivilege"),
+    SE_INCREASE_QUOTA_NAME         = TEXT!("SeIncreaseQuotaPrivilege"),
+    SE_UNSOLICITED_INPUT_NAME      = TEXT!("SeUnsolicitedInputPrivilege"),
+    SE_MACHINE_ACCOUNT_NAME        = TEXT!("SeMachineAccountPrivilege"),
+    SE_TCB_NAME                    = TEXT!("SeTcbPrivilege"),
+    SE_SECURITY_NAME               = TEXT!("SeSecurityPrivilege"),
+    SE_TAKE_OWNERSHIP_NAME         = TEXT!("SeTakeOwnershipPrivilege"),
+    SE_LOAD_DRIVER_NAME            = TEXT!("SeLoadDriverPrivilege"),
+    SE_SYSTEM_PROFILE_NAME         = TEXT!("SeSystemProfilePrivilege"),
+    SE_SYSTEMTIME_NAME             = TEXT!("SeSystemtimePrivilege"),
+    SE_PROF_SINGLE_PROCESS_NAME    = TEXT!("SeProfileSingleProcessPrivilege"),
+    SE_INC_BASE_PRIORITY_NAME      = TEXT!("SeIncreaseBasePriorityPrivilege"),
+    SE_CREATE_PAGEFILE_NAME        = TEXT!("SeCreatePagefilePrivilege"),
+    SE_CREATE_PERMANENT_NAME       = TEXT!("SeCreatePermanentPrivilege"),
+    SE_BACKUP_NAME                 = TEXT!("SeBackupPrivilege"),
+    SE_RESTORE_NAME                = TEXT!("SeRestorePrivilege"),
+    SE_SHUTDOWN_NAME               = TEXT!("SeShutdownPrivilege"),
+    SE_DEBUG_NAME                  = TEXT!("SeDebugPrivilege"),
+    SE_AUDIT_NAME                  = TEXT!("SeAuditPrivilege"),
+    SE_SYSTEM_ENVIRONMENT_NAME     = TEXT!("SeSystemEnvironmentPrivilege"),
+    SE_CHANGE_NOTIFY_NAME          = TEXT!("SeChangeNotifyPrivilege"),
+    SE_REMOTE_SHUTDOWN_NAME        = TEXT!("SeRemoteShutdownPrivilege"),
+    SE_CREATE_GLOBAL_NAME          = TEXT!("SeCreateGlobalPrivilege"),
+    SE_UNDOCK_NAME                 = TEXT!("SeUndockPrivilege"),
+    SE_MANAGE_VOLUME_NAME          = TEXT!("SeManageVolumePrivilege"),
+    SE_IMPERSONATE_NAME            = TEXT!("SeImpersonatePrivilege"),
+    SE_ENABLE_DELEGATION_NAME      = TEXT!("SeEnableDelegationPrivilege"),
+    SE_SYNC_AGENT_NAME             = TEXT!("SeSyncAgentPrivilege"),
+    SE_TRUSTED_CREDMAN_ACCESS_NAME = TEXT!("SeTrustedCredManAccessPrivilege"),
+    SE_RELABEL_NAME                = TEXT!("SeRelabelPrivilege"),
+    SE_INCREASE_WORKING_SET_NAME   = TEXT!("SeIncreaseWorkingSetPrivilege"),
+    SE_TIME_ZONE_NAME              = TEXT!("SeTimeZonePrivilege"),
+    SE_CREATE_SYMBOLIC_LINK_NAME   = TEXT!("SeCreateSymbolicLinkPrivilege");
 
 enum DWORD
     SE_GROUP_MANDATORY          = 0x00000001,
@@ -1544,11 +1545,11 @@ enum {
 enum size_t IMAGE_ARCHIVE_START_SIZE = 8;
 
 const TCHAR[]
-    IMAGE_ARCHIVE_START            = "!<arch>\n",
-    IMAGE_ARCHIVE_END              = "`\n",
-    IMAGE_ARCHIVE_PAD              = "\n",
-    IMAGE_ARCHIVE_LINKER_MEMBER    = "/               ",
-    IMAGE_ARCHIVE_LONGNAMES_MEMBER = "//              ";
+    IMAGE_ARCHIVE_START            = TEXT!("!<arch>\n"),
+    IMAGE_ARCHIVE_END              = TEXT!("`\n"),
+    IMAGE_ARCHIVE_PAD              = TEXT!("\n"),
+    IMAGE_ARCHIVE_LINKER_MEMBER    = TEXT!("/               "),
+    IMAGE_ARCHIVE_LONGNAMES_MEMBER = TEXT!("//              ");
 
 enum IMAGE_ORDINAL_FLAG32 = 0x80000000;
 

@@ -14,7 +14,7 @@ pragma(lib, "advapi32");
 version (ANSI) {} else version = Unicode;
 
 private import core.sys.windows.w32api, core.sys.windows.winbase, core.sys.windows.windef;
-
+private import core.sys.windows.winnt : TEXT;
 /* FIXME:
  *  Types of some constants
  *  Types of macros
@@ -23,25 +23,25 @@ private import core.sys.windows.w32api, core.sys.windows.winbase, core.sys.windo
  */
 
 const TCHAR[]
-    MS_DEF_PROV = "Microsoft Base Cryptographic Provider v1.0",
-    MS_ENHANCED_PROV = "Microsoft Enhanced Cryptographic Provider v1.0",
-    MS_STRONG_PROV = "Microsoft Strong Cryptographic Provider",
-    MS_DEF_RSA_SIG_PROV = "Microsoft RSA Signature Cryptographic Provider",
-    MS_DEF_RSA_SCHANNEL_PROV = "Microsoft RSA SChannel Cryptographic Provider",
-    MS_DEF_DSS_PROV = "Microsoft Base DSS Cryptographic Provider",
+    MS_DEF_PROV = TEXT!"Microsoft Base Cryptographic Provider v1.0",
+    MS_ENHANCED_PROV = TEXT!"Microsoft Enhanced Cryptographic Provider v1.0",
+    MS_STRONG_PROV = TEXT!"Microsoft Strong Cryptographic Provider",
+    MS_DEF_RSA_SIG_PROV = TEXT!"Microsoft RSA Signature Cryptographic Provider",
+    MS_DEF_RSA_SCHANNEL_PROV = TEXT!"Microsoft RSA SChannel Cryptographic Provider",
+    MS_DEF_DSS_PROV = TEXT!"Microsoft Base DSS Cryptographic Provider",
     MS_DEF_DSS_DH_PROV
-      = "Microsoft Base DSS and Diffie-Hellman Cryptographic Provider",
+      = TEXT!"Microsoft Base DSS and Diffie-Hellman Cryptographic Provider",
     MS_ENH_DSS_DH_PROV
-      = "Microsoft Enhanced DSS and Diffie-Hellman Cryptographic Provider",
-    MS_DEF_DH_SCHANNEL_PROV = "Microsoft DH SChannel Cryptographic Provider",
-    MS_SCARD_PROV = "Microsoft Base Smart Card Crypto Provider";
+      = TEXT!"Microsoft Enhanced DSS and Diffie-Hellman Cryptographic Provider",
+    MS_DEF_DH_SCHANNEL_PROV = TEXT!"Microsoft DH SChannel Cryptographic Provider",
+    MS_SCARD_PROV = TEXT!"Microsoft Base Smart Card Crypto Provider";
 
 static if (_WIN32_WINNT > 0x501) {
 const TCHAR[] MS_ENH_RSA_AES_PROV
-      = "Microsoft Enhanced RSA and AES Cryptographic Provider";
+      = TEXT!"Microsoft Enhanced RSA and AES Cryptographic Provider";
 } else static if (_WIN32_WINNT == 0x501) {
 const TCHAR[] MS_ENH_RSA_AES_PROV
-      = "Microsoft Enhanced RSA and AES Cryptographic Provider (Prototype)";
+      = TEXT!"Microsoft Enhanced RSA and AES Cryptographic Provider (Prototype)";
 }
 
 ALG_ID GET_ALG_CLASS(ALG_ID x) { return x & 0xE000; }
@@ -433,10 +433,10 @@ enum {
 }
 
 enum {
-    szOID_PKIX_KP_SERVER_AUTH = "4235600",
-    szOID_SERVER_GATED_CRYPTO = "4235658",
-    szOID_SGC_NETSCAPE = "2.16.840.1.113730.4.1",
-    szOID_PKIX_KP_CLIENT_AUTH = "1.3.6.1.5.5.7.3.2",
+    szOID_PKIX_KP_SERVER_AUTH = TEXT!"4235600",
+    szOID_SERVER_GATED_CRYPTO = TEXT!"4235658",
+    szOID_SGC_NETSCAPE = TEXT!"2.16.840.1.113730.4.1",
+    szOID_PKIX_KP_CLIENT_AUTH = TEXT!"1.3.6.1.5.5.7.3.2",
 }
 
 enum {

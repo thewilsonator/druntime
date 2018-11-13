@@ -17,8 +17,9 @@ version (Windows):
 // TODO: 5 macros
 
 private import core.sys.windows.lmcons, core.sys.windows.lmsname, core.sys.windows.windef;
+private import core.sys.windows.winnt : TEXT;
 
-const TCHAR[] SERVICE_DOS_ENCRYPTION = "ENCRYPT";
+const TCHAR[] SERVICE_DOS_ENCRYPTION = TEXT!"ENCRYPT";
 
 enum SERVICE_UNINSTALLED=0;
 enum SERVICE_INSTALL_PENDING=1;

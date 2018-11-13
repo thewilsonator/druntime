@@ -14,23 +14,24 @@ version (ANSI) {} else version = Unicode;
 import core.sys.windows.commdlg, core.sys.windows.dlgs, core.sys.windows.ole2, core.sys.windows.prsht, core.sys.windows.shellapi,
   core.sys.windows.windows;
 private import core.sys.windows.winbase, core.sys.windows.objidl, core.sys.windows.objfwd, core.sys.windows.winnt;
+private import core.sys.windows.winnt : TEXT;
 
 // FIXME: remove inherited methods from interface definitions
 
 enum PS_MAXLINKTYPES=8;
 
-const TCHAR[] OLESTDDELIM = "\\";
-const TCHAR[] SZOLEUI_MSG_HELP = "OLEUI_MSG_HELP";
-const TCHAR[] SZOLEUI_MSG_ENDDIALOG = "OLEUI_MSG_ENDDIALOG";
-const TCHAR[] SZOLEUI_MSG_BROWSE = "OLEUI_MSG_BROWSE";
-const TCHAR[] SZOLEUI_MSG_CHANGEICON = "OLEUI_MSG_CHANGEICON";
-const TCHAR[] SZOLEUI_MSG_CLOSEBUSYDIALOG = "OLEUI_MSG_CLOSEBUSYDIALOG";
-const TCHAR[] SZOLEUI_MSG_CONVERT = "OLEUI_MSG_CONVERT";
-const TCHAR[] SZOLEUI_MSG_CHANGESOURCE = "OLEUI_MSG_CHANGESOURCE";
-const TCHAR[] SZOLEUI_MSG_ADDCONTROL = "OLEUI_MSG_ADDCONTROL";
-const TCHAR[] SZOLEUI_MSG_BROWSE_OFN = "OLEUI_MSG_BROWSE_OFN";
+const TCHAR[] OLESTDDELIM                 = TEXT!"\\";
+const TCHAR[] SZOLEUI_MSG_HELP            = TEXT!"OLEUI_MSG_HELP";
+const TCHAR[] SZOLEUI_MSG_ENDDIALOG       = TEXT!"OLEUI_MSG_ENDDIALOG";
+const TCHAR[] SZOLEUI_MSG_BROWSE          = TEXT!"OLEUI_MSG_BROWSE";
+const TCHAR[] SZOLEUI_MSG_CHANGEICON      = TEXT!"OLEUI_MSG_CHANGEICON";
+const TCHAR[] SZOLEUI_MSG_CLOSEBUSYDIALOG = TEXT!"OLEUI_MSG_CLOSEBUSYDIALOG";
+const TCHAR[] SZOLEUI_MSG_CONVERT         = TEXT!"OLEUI_MSG_CONVERT";
+const TCHAR[] SZOLEUI_MSG_CHANGESOURCE    = TEXT!"OLEUI_MSG_CHANGESOURCE";
+const TCHAR[] SZOLEUI_MSG_ADDCONTROL      = TEXT!"OLEUI_MSG_ADDCONTROL";
+const TCHAR[] SZOLEUI_MSG_BROWSE_OFN      = TEXT!"OLEUI_MSG_BROWSE_OFN";
 
-const TCHAR[] PROP_HWND_CHGICONDLG = "HWND_CIDLG";
+const TCHAR[] PROP_HWND_CHGICONDLG        = TEXT!"HWND_CIDLG";
 
 enum IDC_OLEUIHELP=99;
 

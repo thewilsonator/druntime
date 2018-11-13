@@ -14,6 +14,7 @@ version (ANSI) {} else version = Unicode;
 pragma(lib, "user32");
 
 private import core.sys.windows.basetsd, core.sys.windows.windef, core.sys.windows.winnt;
+private import core.sys.windows.winnt : TEXT;
 
 enum : int {
     CP_WINANSI    = 1004,
@@ -359,14 +360,14 @@ extern (Windows) {
 }
 
 const TCHAR[]
-    SZDDESYS_TOPIC         = "System",
-    SZDDESYS_ITEM_TOPICS   = "Topics",
-    SZDDESYS_ITEM_SYSITEMS = "SysItems",
-    SZDDESYS_ITEM_RTNMSG   = "ReturnMessage",
-    SZDDESYS_ITEM_STATUS   = "Status",
-    SZDDESYS_ITEM_FORMATS  = "Formats",
-    SZDDESYS_ITEM_HELP     = "Help",
-    SZDDE_ITEM_ITEMLIST    = "TopicItemList";
+    SZDDESYS_TOPIC         = TEXT!"System",
+    SZDDESYS_ITEM_TOPICS   = TEXT!"Topics",
+    SZDDESYS_ITEM_SYSITEMS = TEXT!"SysItems",
+    SZDDESYS_ITEM_RTNMSG   = TEXT!"ReturnMessage",
+    SZDDESYS_ITEM_STATUS   = TEXT!"Status",
+    SZDDESYS_ITEM_FORMATS  = TEXT!"Formats",
+    SZDDESYS_ITEM_HELP     = TEXT!"Help",
+    SZDDE_ITEM_ITEMLIST    = TEXT!"TopicItemList";
 
 version (Unicode) {
     alias DdeCreateStringHandleW DdeCreateStringHandle;

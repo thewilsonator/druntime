@@ -15,7 +15,7 @@ version (ANSI) {} else version = Unicode;
 
 private import
   core.sys.windows.basetyps, core.sys.windows.ntdef, core.sys.windows.windef, core.sys.windows.winnt, core.sys.windows.w32api;
-
+private import core.sys.windows.winnt : TEXT;
 // FIXME: check types and grouping of constants
 // FIXME: check Windows version support
 
@@ -150,10 +150,10 @@ const char[]
     SAM_PASSWORD_FILTER_ROUTINE        = "PasswordFilter";
 
 const TCHAR[]
-    SE_INTERACTIVE_LOGON_NAME          = "SeInteractiveLogonRight",
-    SE_NETWORK_LOGON_NAME              = "SeNetworkLogonRight",
-    SE_BATCH_LOGON_NAME                = "SeBatchLogonRight",
-    SE_SERVICE_LOGON_NAME              = "SeServiceLogonRight";
+    SE_INTERACTIVE_LOGON_NAME          = TEXT!"SeInteractiveLogonRight",
+    SE_NETWORK_LOGON_NAME              = TEXT!"SeNetworkLogonRight",
+    SE_BATCH_LOGON_NAME                = TEXT!"SeBatchLogonRight",
+    SE_SERVICE_LOGON_NAME              = TEXT!"SeServiceLogonRight";
 
 enum {
     TRUST_ATTRIBUTE_NON_TRANSITIVE =         1,

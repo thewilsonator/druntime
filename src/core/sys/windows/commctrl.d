@@ -15,39 +15,40 @@ pragma(lib, "comctl32");
 private import core.sys.windows.w32api, core.sys.windows.windef, core.sys.windows.winuser;
 private import core.sys.windows.winbase; // for SYSTEMTIME
 private import core.sys.windows.objfwd;  // for LPSTREAM
+private import core.sys.windows.winnt : TEXT;
 
 import core.sys.windows.prsht;
 
 enum COMCTL32_VERSION = 6;
 
 const TCHAR[]
-    DRAGLISTMSGSTRING  = "commctrl_DragListMsg",
-    HOTKEY_CLASS       = "msctls_hotkey32",
-    PROGRESS_CLASS     = "msctls_progress32",
-    STATUSCLASSNAME    = "msctls_statusbar32",
-    TOOLBARCLASSNAME   = "ToolbarWindow32",
-    TOOLTIPS_CLASS     = "tooltips_class32",
-    TRACKBAR_CLASS     = "msctls_trackbar32",
-    UPDOWN_CLASS       = "msctls_updown32",
-    ANIMATE_CLASS      = "SysAnimate32",
-    DATETIMEPICK_CLASS = "SysDateTimePick32",
-    MONTHCAL_CLASS     = "SysMonthCal32",
-    REBARCLASSNAME     = "ReBarWindow32",
-    WC_COMBOBOXEX      = "ComboBoxEx32",
-    WC_IPADDRESS       = "SysIPAddress32",
-    WC_LISTVIEW        = "SysListView32",
-    WC_TABCONTROL      = "SysTabControl32",
-    WC_TREEVIEW        = "SysTreeView32",
-    WC_HEADER          = "SysHeader32",
-    WC_PAGESCROLLER    = "SysPager",
-    WC_NATIVEFONTCTL   = "NativeFontCtl",
-    WC_BUTTON          = "Button",
-    WC_STATIC          = "Static",
-    WC_EDIT            = "Edit",
-    WC_LISTBOX         = "ListBox",
-    WC_COMBOBOX        = "ComboBox",
-    WC_SCROLLBAR       = "ScrollBar",
-    WC_LINKA           = "SysLink";
+    DRAGLISTMSGSTRING  = TEXT!"commctrl_DragListMsg",
+    HOTKEY_CLASS       = TEXT!"msctls_hotkey32",
+    PROGRESS_CLASS     = TEXT!"msctls_progress32",
+    STATUSCLASSNAME    = TEXT!"msctls_statusbar32",
+    TOOLBARCLASSNAME   = TEXT!"ToolbarWindow32",
+    TOOLTIPS_CLASS     = TEXT!"tooltips_class32",
+    TRACKBAR_CLASS     = TEXT!"msctls_trackbar32",
+    UPDOWN_CLASS       = TEXT!"msctls_updown32",
+    ANIMATE_CLASS      = TEXT!"SysAnimate32",
+    DATETIMEPICK_CLASS = TEXT!"SysDateTimePick32",
+    MONTHCAL_CLASS     = TEXT!"SysMonthCal32",
+    REBARCLASSNAME     = TEXT!"ReBarWindow32",
+    WC_COMBOBOXEX      = TEXT!"ComboBoxEx32",
+    WC_IPADDRESS       = TEXT!"SysIPAddress32",
+    WC_LISTVIEW        = TEXT!"SysListView32",
+    WC_TABCONTROL      = TEXT!"SysTabControl32",
+    WC_TREEVIEW        = TEXT!"SysTreeView32",
+    WC_HEADER          = TEXT!"SysHeader32",
+    WC_PAGESCROLLER    = TEXT!"SysPager",
+    WC_NATIVEFONTCTL   = TEXT!"NativeFontCtl",
+    WC_BUTTON          = TEXT!"Button",
+    WC_STATIC          = TEXT!"Static",
+    WC_EDIT            = TEXT!"Edit",
+    WC_LISTBOX         = TEXT!"ListBox",
+    WC_COMBOBOX        = TEXT!"ComboBox",
+    WC_SCROLLBAR       = TEXT!"ScrollBar",
+    WC_LINKA           = TEXT!"SysLink";
 
 enum {
     LVM_FIRST = 0x1000,
